@@ -4,12 +4,13 @@
  */
 const AppStyles = {
   color: {
-    COLOR_PRIMARY: '#2ec7ab',
+    COLOR_PRIMARY: '#315aec',
     COLOR_SECONDARY: '#111',
     COLOR_WHITE: '#FFFFFF',
     COLOR_BLACK: '#000000',
-    COLOR_GREY: 'grey',
-    COLOR_GREEN: 'green',
+    COLOR_GREY: '#d4d7d9',
+    COLOR_GREEN: '#8ccc47',
+    COLOR_RED: '#f74231',
     COLOR_PLACEHOLDER: '#111111',
     COLOR_GREY_WHITE: '#fafafa',
     COLOR_DARK_SEPERATOR: '#d4d4d4',
