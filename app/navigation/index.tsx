@@ -1,2 +1,2 @@
-import NavigationStack from './NavigationStack';
-export default NavigationStack;
+import BottomTabs from './TabNavigation';
+export default BottomTabs;
