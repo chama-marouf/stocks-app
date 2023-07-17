@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   name: {
-    color: colors.COLOR_GREY,
+    color: colors.COLOR_BLACK_TRANSP,
     fontSize: 12,
   },
   symbol: {
