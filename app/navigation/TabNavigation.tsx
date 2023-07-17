@@ -16,7 +16,20 @@ const Tab = createBottomTabNavigator();
 function BottomTabs() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        tabBarOptions={{
+          style: {
+            borderTopWidth: 0,
+          },
+          activeTintColor: colors.COLOR_PRIMARY,
+          inactiveTintColor: colors.COLOR_BLACK,
+          labelStyle: {
+            fontSize: 12,
+          },
+          safeAreaInsets: {
+            bottom: Platform.OS === 'android' ? 5 : null,
+          },
+        }}>
         <Tab.Screen
           options={{
             headerShown: false,
