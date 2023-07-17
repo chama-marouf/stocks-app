@@ -4,6 +4,7 @@ import { NavigationContainer, Theme } from '@react-navigation/native';
 import MarketStack from './MarketStack';
 import Portflolio from 'app/screens/Portfolio';
 import News from 'app/screens/News';
+import MarketStack from './MarketStack';
 import { theme } from 'app/styles';
 const { colors } = theme;
 

@@ -15,7 +15,7 @@ type StockItemType = {
   percentageGain: number;
   historicalData: string;
   price: number;
-  onPress: void;
+  navigation: any;
 };
 
 const StockItem: React.FC<StockItemType> = ({
@@ -24,7 +24,7 @@ const StockItem: React.FC<StockItemType> = ({
   percentageGain,
   historicalData,
   price,
-  onPress,
+  navigation,
 }) => {
   const transformDataForChart = data => {
     const labels = data.map(item => item.date);
@@ -43,7 +43,13 @@ const StockItem: React.FC<StockItemType> = ({
   const chartData = transformDataForChart(historicalData);
 
   return (
-    <TouchableOpacity onPress={() => onPress} style={styles.container}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('StockDetails', {
+          stock: { symbol, name, percentageGain, historicalData, price },
+        })
+      }
+      style={styles.container}>
       <View style={styles.nameContainer}>
         <Text style={styles.symbol}>{symbol} </Text>
         <Text style={styles.name}>{name} </Text>
@@ -52,6 +58,8 @@ const StockItem: React.FC<StockItemType> = ({
         <LineChartComponent
           data={chartData}
           color={percentageGain > 0 ? colors.COLOR_GREEN : colors.COLOR_RED}
+          height={70}
+          width={120}
         />
       </View>
       <View>

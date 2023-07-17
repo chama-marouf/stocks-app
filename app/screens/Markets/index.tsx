@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StatusBar, FlatList } from 'react-native';
 import styles from './styles';
 import SearchBar from './Components/SearchBar';
 import Header from './Components/Header';
 
 import MainMarket from 'app/data/mainMarket.json';
-import JuniorMarket from 'app/data/mainMarket.json';
-import GrowthMarket from 'app/data/mainMarket.json';
+import JuniorMarket from 'app/data/juniorMarket.json';
+import GrowthMarket from 'app/data/growthMarket.json';
 
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 
 import { theme } from 'app/styles';
 import StockItem from 'app/components/StockItem';
-
+import NavigationService from 'app/navigation/NavigationService';
 const { colors } = theme;
 
 const Markets: React.FC = ({ navigation }) => {
@@ -89,6 +89,69 @@ const Markets: React.FC = ({ navigation }) => {
   const navigateToStockDetails = (stock: any) => {
     // navigation.navigate('StockDetails', { stock });
   };
+
+  const MainMarketScene = () => (
+    <View style={{ flex: 1 }}>
+      <FlatList
+        data={MainMarket}
+        renderItem={({ item }) => (
+          <StockItem
+            symbol={item.symbol}
+            name={item.name}
+            percentageGain={item.percentageGain}
+            historicalData={item.historicalData}
+            price={item.price}
+            navigation={navigation}
+          />
+        )}
+        keyExtractor={item => item.id}
+      />
+    </View>
+  );
+
+  const JuniorMarketScene = () => (
+    <View style={{ flex: 1 }}>
+      <FlatList
+        data={JuniorMarket}
+        renderItem={({ item }) => (
+          <StockItem
+            symbol={item.symbol}
+            name={item.name}
+            percentageGain={item.percentageGain}
+            historicalData={item.historicalData}
+            price={item.price}
+            navigation={navigation}
+          />
+        )}
+        keyExtractor={item => item.id}
+      />
+    </View>
+  );
+
+  const GrowthMarketScene = () => (
+    <View style={{ flex: 1 }}>
+      <FlatList
+        data={GrowthMarket}
+        renderItem={({ item }) => (
+          <StockItem
+            symbol={item.symbol}
+            name={item.name}
+            percentageGain={item.percentageGain}
+            historicalData={item.historicalData}
+            price={item.price}
+            navigation={navigation}
+          />
+        )}
+        keyExtractor={item => item.id}
+      />
+    </View>
+  );
+
+  const renderScene = SceneMap({
+    first: JuniorMarketScene,
+    second: MainMarketScene,
+    third: GrowthMarketScene,
+  });
 
   return (
     <View style={[styles.container, styles.container]}>

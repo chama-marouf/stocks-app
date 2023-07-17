@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { NavigationContainer, Theme } from '@react-navigation/native';
+import { Theme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { navigationRef } from './NavigationService';
-
-import { StatusBar } from 'react-native';
+import ThemeController from '../components/ThemeController';
 
 import Markets from 'app/screens/Markets';
 import StockDetails from 'app/screens/Markets/StockDetails';
@@ -16,15 +14,14 @@ const homeOptions = {
   headerTitleStyle: {
     fontWeight: 'bold',
   },
+  headerRight: () => <ThemeController />,
 };
 
 interface IProps {
   theme: Theme;
 }
 
-const App: React.FC<IProps> = (props: IProps) => {
-  const { theme } = props;
-
+const MarketStack: React.FC<IProps> = (props: IProps) => {
   return (
     <Stack.Navigator headerMode="none">
       <Stack.Screen name="Markets" component={Markets} options={homeOptions} />
@@ -33,4 +30,4 @@ const App: React.FC<IProps> = (props: IProps) => {
   );
 };
 
-export default App;
+export default MarketStack;
