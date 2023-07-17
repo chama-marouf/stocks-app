@@ -5,6 +5,8 @@ import { LineChart } from 'react-native-chart-kit';
 type Props = {
   data: any;
   color: string;
+  height: number;
+  width: number;
 };
 
 const LineChartComponent = (props: Props) => {
@@ -14,8 +16,8 @@ const LineChartComponent = (props: Props) => {
         data={props.data}
         // yAxisInterval={100}
         // XAxisInterval={1}
-        height={70}
-        width={120}
+        height={props.height}
+        width={props.width}
         withInnerLines={false}
         withShadow={false}
         chartConfig={{
@@ -34,6 +36,7 @@ const LineChartComponent = (props: Props) => {
         }}
         bezier
         withHorizontalLabels={false}
+        withVerticalLabels={false}
         withVerticalLines={false}
         withHorizontalLines={false}
       />
