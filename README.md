@@ -4,20 +4,22 @@ The Stocks App is a user-friendly and intuitive application designed to provide 
 
 # Key Features:
 
-# Stocks List
+## Stocks List
 
-# Stock Search:
+Visualize a list of stocks up to date.
 
-Easily search and find information about stocks from a vast database of companies. Get real-time stock prices, market data, and detailed company profiles.
+## Stock Search:
 
-# Stock Details:
+Easily search and find information about stocks.
 
-Dive deeper into individual stocks with in-depth information, including key financial ratios, historical price charts, news articles, and analyst ratings. Stay up to date with all the essential data you need to make informed investment choices.
+## Stock Details:
+
+Dive deeper into individual stocks with in-depth information, including key financial ratios, historical price charts.
 
 ## Technologies used to build this project
 
 - [Typescript](https://www.typescriptlang.org/).
-- [React Navigation](https://reactnavigation.org/) with [Authentication flow](https://reactnavigation.org/docs/auth-flow).
+- [React Navigation](https://reactnavigation.org/)
 - [React Native Gesture Handler](https://github.com/kmagiera/react-native-gesture-handler)
 - [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
 - [Eslint](http://eslint.org/).
