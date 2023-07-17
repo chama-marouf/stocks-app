@@ -7,17 +7,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colors.COLOR_WHITE,
   },
   title: {
     fontSize: 24,
     color: colors.COLOR_BLACK,
     fontWeight: 'bold',
     marginTop: 48,
-  },
-  topContainer: {
-    backgroundColor: colors.COLOR_PRIMARY,
-    paddingBottom: 48,
-    padding: 18,
   },
 });
 
