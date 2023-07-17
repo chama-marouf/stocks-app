@@ -24,9 +24,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
-  percentageGain: {
-    color: colors.COLOR_RED,
-  },
+  percentageGain: {},
   nameContainer: {
     width: 140,
   },

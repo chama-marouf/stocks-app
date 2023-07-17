@@ -64,7 +64,15 @@ const StockItem: React.FC<StockItemType> = ({
       </View>
       <View>
         <Text style={styles.price}>{`$${price}`} </Text>
-        <Text style={styles.percentageGain}>{`${percentageGain}%`} </Text>
+        <Text
+          style={[
+            styles.percentageGain,
+            {
+              color: percentageGain > 0 ? colors.COLOR_GREEN : colors.COLOR_RED,
+            },
+          ]}>
+          {`${percentageGain}%`}{' '}
+        </Text>
       </View>
     </TouchableOpacity>
   );
