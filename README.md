@@ -8,18 +8,22 @@ The Stocks App is a user-friendly and intuitive application designed to provide 
 
 Visualize a list of stocks up to date.
 
-![stocks1](https://github.com/chama-marouf/stocks-app/assets/13591751/d512d1bb-d3ee-464c-9658-28c11f614d7f)
+![stocks1](https://github.com/chama-marouf/stocks-app/assets/13591751/75ac2447-b6fc-4786-9b12-6bb07d68e110)
+
 
 ## Stock Search:
 
 Easily search and find information about stocks.
 
-![stocks5](https://github.com/chama-marouf/stocks-app/assets/13591751/28e234cb-548d-41f0-b5dc-b8357e1555b4)
+![stocks5](https://github.com/chama-marouf/stocks-app/assets/13591751/2173f6f3-f724-4724-a8f0-7c476b004a56)
+
 
 ## Stock Details:
 
 Dive deeper into individual stocks with in-depth information, including key financial ratios, historical price charts.
-![stocks2](https://github.com/chama-marouf/stocks-app/assets/13591751/c218943a-4fba-4c40-b9b1-cc0d8917875e)
+
+![stocks2](https://github.com/chama-marouf/stocks-app/assets/13591751/abd7dc27-6331-4c99-8108-aa2d2ff4ddde)
+
 
 ## Technologies used to build this project
 
@@ -33,7 +37,11 @@ Dive deeper into individual stocks with in-depth information, including key fina
 
 
 
-https://github.com/chama-marouf/stocks-app/assets/13591751/9905a49b-65cf-4499-a7b8-ba76ec80acd8
+
+https://github.com/chama-marouf/stocks-app/assets/13591751/4af45eac-92bc-4c64-9414-3918e4a6e9ff
+
+
+
 
 
 
