@@ -3,11 +3,20 @@ import { View, Text, TextInput } from 'react-native';
 
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-const SearchBar: React.FC = () => {
+interface SearchBarProps {
+  searchQuery: string;
+  onSearchQueryChange: (query: string) => void;
+}
+const SearchBar: React.FC<SearchBarProps> = ({
+  searchQuery,
+  onSearchQueryChange,
+}) => {
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Search markets"
+        placeholder="Search"
+        // value={searchQuery}
+        onChangeText={onSearchQueryChange}
         style={{
           backgroundColor: 'rgba(255, 255, 255, 0.5)',
           borderRadius: 10,

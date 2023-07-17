@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StatusBar, FlatList } from 'react-native';
 import styles from './styles';
 import SearchBar from './Components/SearchBar';
@@ -12,20 +12,47 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 
 import { theme } from 'app/styles';
 import StockItem from 'app/components/StockItem';
-import NavigationService from 'app/navigation/NavigationService';
+
 const { colors } = theme;
 
+const MarketsProps = {};
+
 const Markets: React.FC = ({ navigation }) => {
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
+  const [index, setIndex] = useState(0);
+  const [filteredData, setFilteredData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [routes] = useState([
     { key: 'first', title: 'Junior Market' },
     { key: 'second', title: 'Main Market' },
     { key: 'third', title: 'Growth Market' },
   ]);
+
+  useEffect(() => {
+    const filteredMainMarket = MainMarket.filter(item => {
+      const itemName = item.name.toLowerCase();
+      return itemName.includes(searchQuery.toLowerCase());
+    });
+
+    const filteredJuniorMarket = JuniorMarket.filter(item => {
+      const itemName = item.name.toLowerCase();
+      return itemName.includes(searchQuery.toLowerCase());
+    });
+
+    const filteredGrowthMarket = GrowthMarket.filter(item => {
+      const itemName = item.name.toLowerCase();
+      return itemName.includes(searchQuery.toLowerCase());
+    });
+
+    setFilteredData([
+      filteredJuniorMarket,
+      filteredMainMarket,
+      filteredGrowthMarket,
+    ]);
+  }, [searchQuery]);
   const MainMarketScene = () => (
     <View style={{ flex: 1 }}>
       <FlatList
-        data={MainMarket}
+        data={filteredData[0]}
         renderItem={({ item }) => {
           console.log('item', item.price);
           return (
@@ -35,7 +62,7 @@ const Markets: React.FC = ({ navigation }) => {
               percentageGain={item.percentageGain}
               historicalData={item.historicalData}
               price={item.price}
-              onPress={navigateToStockDetails(item)}
+              navigation={navigation}
             />
           );
         }}
@@ -47,7 +74,7 @@ const Markets: React.FC = ({ navigation }) => {
   const JuniorMarketScene = () => (
     <View style={{ flex: 1 }}>
       <FlatList
-        data={JuniorMarket}
+        data={filteredData[1]}
         renderItem={({ item }) => (
           <StockItem
             symbol={item.symbol}
@@ -55,6 +82,7 @@ const Markets: React.FC = ({ navigation }) => {
             percentageGain={item.percentageGain}
             historicalData={item.historicalData}
             price={item.price}
+            navigation={navigation}
           />
         )}
         keyExtractor={item => item.id}
@@ -65,7 +93,7 @@ const Markets: React.FC = ({ navigation }) => {
   const GrowthMarketScene = () => (
     <View style={{ flex: 1 }}>
       <FlatList
-        data={GrowthMarket}
+        data={filteredData[2]}
         renderItem={({ item }) => (
           <StockItem
             symbol={item.symbol}
@@ -73,6 +101,7 @@ const Markets: React.FC = ({ navigation }) => {
             percentageGain={item.percentageGain}
             historicalData={item.historicalData}
             price={item.price}
+            navigation={navigation}
           />
         )}
         keyExtractor={item => item.id}
@@ -86,72 +115,9 @@ const Markets: React.FC = ({ navigation }) => {
     third: GrowthMarketScene,
   });
 
-  const navigateToStockDetails = (stock: any) => {
-    // navigation.navigate('StockDetails', { stock });
+  const handleSearchQueryChange = (query: string) => {
+    setSearchQuery(query);
   };
-
-  const MainMarketScene = () => (
-    <View style={{ flex: 1 }}>
-      <FlatList
-        data={MainMarket}
-        renderItem={({ item }) => (
-          <StockItem
-            symbol={item.symbol}
-            name={item.name}
-            percentageGain={item.percentageGain}
-            historicalData={item.historicalData}
-            price={item.price}
-            navigation={navigation}
-          />
-        )}
-        keyExtractor={item => item.id}
-      />
-    </View>
-  );
-
-  const JuniorMarketScene = () => (
-    <View style={{ flex: 1 }}>
-      <FlatList
-        data={JuniorMarket}
-        renderItem={({ item }) => (
-          <StockItem
-            symbol={item.symbol}
-            name={item.name}
-            percentageGain={item.percentageGain}
-            historicalData={item.historicalData}
-            price={item.price}
-            navigation={navigation}
-          />
-        )}
-        keyExtractor={item => item.id}
-      />
-    </View>
-  );
-
-  const GrowthMarketScene = () => (
-    <View style={{ flex: 1 }}>
-      <FlatList
-        data={GrowthMarket}
-        renderItem={({ item }) => (
-          <StockItem
-            symbol={item.symbol}
-            name={item.name}
-            percentageGain={item.percentageGain}
-            historicalData={item.historicalData}
-            price={item.price}
-            navigation={navigation}
-          />
-        )}
-        keyExtractor={item => item.id}
-      />
-    </View>
-  );
-
-  const renderScene = SceneMap({
-    first: JuniorMarketScene,
-    second: MainMarketScene,
-    third: GrowthMarketScene,
-  });
 
   return (
     <View style={[styles.container, styles.container]}>
@@ -162,7 +128,10 @@ const Markets: React.FC = ({ navigation }) => {
       <View style={styles.topContainer}>
         <Header />
         <Text style={styles.title}>Markets</Text>
-        <SearchBar />
+        <SearchBar
+          searchQuery={searchQuery}
+          onSearchQueryChange={handleSearchQueryChange}
+        />
       </View>
       <View style={{ flex: 1 }}>
         <TabView
