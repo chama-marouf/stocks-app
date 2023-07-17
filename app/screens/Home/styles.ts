@@ -10,10 +10,12 @@ const styles = StyleSheet.create({
     fontSize: 36,
     color: colors.COLOR_WHITE,
     fontWeight: 'bold',
+    marginTop: 48,
   },
   topContainer: {
     backgroundColor: colors.COLOR_PRIMARY,
-    height: 300,
+    paddingBottom: 48,
+    padding: 18,
   },
 });
 

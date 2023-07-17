@@ -2,18 +2,19 @@ import React from 'react';
 import { View, Text, TextInput } from 'react-native';
 
 import styles from './styles';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const SearchBar: React.FC = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>SearchBar</Text>
       <TextInput
         placeholder="Search markets"
         style={{
           backgroundColor: 'rgba(255, 255, 255, 0.5)',
           borderRadius: 10,
-          width: '80%',
-        }}
-      />
+          paddingHorizontal: 12,
+        }}>
+        <Icon name="magnify" color="#FFF" size={24} />
+      </TextInput>
     </View>
   );
 };

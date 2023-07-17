@@ -4,7 +4,7 @@ const { colors } = theme;
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    marginVertical: 8,
   },
   title: {
     fontSize: 36,
