@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, Theme } from '@react-navigation/native';
-import Markets from 'app/screens/Markets';
+import MarketStack from './MarketStack';
 import Portflolio from 'app/screens/Portfolio';
 import News from 'app/screens/News';
 import { theme } from 'app/styles';
@@ -49,8 +49,8 @@ function BottomTabs() {
                 <MarketsIcon width={24} />
               ),
           }}
-          name="Markets"
-          component={Markets}
+          name="MarketsStack"
+          component={MarketStack}
         />
         <Tab.Screen
           options={{

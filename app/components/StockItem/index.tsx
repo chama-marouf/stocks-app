@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import { View, Text, Dimensions, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 import { theme } from 'app/styles';
 import LineChartComponent from '../LineChart';
+import NavigationService from 'app/navigation/NavigationService';
 const { colors } = theme;
 
 type StockItemType = {
@@ -14,6 +15,7 @@ type StockItemType = {
   percentageGain: number;
   historicalData: string;
   price: number;
+  onPress: void;
 };
 
 const StockItem: React.FC<StockItemType> = ({
@@ -22,6 +24,7 @@ const StockItem: React.FC<StockItemType> = ({
   percentageGain,
   historicalData,
   price,
+  onPress,
 }) => {
   const transformDataForChart = data => {
     const labels = data.map(item => item.date);
@@ -40,7 +43,7 @@ const StockItem: React.FC<StockItemType> = ({
   const chartData = transformDataForChart(historicalData);
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={() => onPress} style={styles.container}>
       <View style={styles.nameContainer}>
         <Text style={styles.symbol}>{symbol} </Text>
         <Text style={styles.name}>{name} </Text>
@@ -55,7 +58,7 @@ const StockItem: React.FC<StockItemType> = ({
         <Text style={styles.price}>{`$ ${price}`} </Text>
         <Text style={styles.percentageGain}>{percentageGain} </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

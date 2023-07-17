@@ -4,10 +4,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { navigationRef } from './NavigationService';
 
-import ThemeController from '../components/ThemeController';
 import { StatusBar } from 'react-native';
-import { ILoginState } from 'app/models/reducers/login';
-import BottomTabs from './TabNavigation';
+
+import Markets from 'app/screens/Markets';
+import StockDetails from 'app/screens/Markets/StockDetails';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +16,6 @@ const homeOptions = {
   headerTitleStyle: {
     fontWeight: 'bold',
   },
-  headerRight: () => <ThemeController />,
 };
 
 interface IProps {
@@ -27,17 +26,10 @@ const App: React.FC<IProps> = (props: IProps) => {
   const { theme } = props;
 
   return (
-    <NavigationContainer ref={navigationRef} theme={theme}>
-      <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
-
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen
-          name="Home"
-          component={BottomTabs}
-          options={homeOptions}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="Markets" component={Markets} options={homeOptions} />
+      <Stack.Screen name="StockDetails" component={StockDetails} />
+    </Stack.Navigator>
   );
 };
 
