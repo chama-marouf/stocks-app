@@ -15,6 +15,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.COLOR_PRIMARY,
     height: 300,
   },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    borderRadius: 10,
+    paddingHorizontal: 12,
+  },
 });
 
 export default styles;

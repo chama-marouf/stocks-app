@@ -12,18 +12,15 @@ const SearchBar: React.FC<SearchBarProps> = ({
   onSearchQueryChange,
 }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.inputContainer}>
+      <Icon name="magnify" color="#FFF" size={24} />
       <TextInput
         placeholder="Search"
         // value={searchQuery}
         onChangeText={onSearchQueryChange}
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.5)',
-          borderRadius: 10,
-          paddingHorizontal: 12,
-        }}>
-        <Icon name="magnify" color="#FFF" size={24} />
-      </TextInput>
+          flex: 1,
+        }}></TextInput>
     </View>
   );
 };

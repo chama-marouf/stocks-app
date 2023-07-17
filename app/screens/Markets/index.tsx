@@ -159,25 +159,34 @@ const Markets: React.FC<MarketsProps> = ({ navigation }) => {
           navigationState={{ index, routes }}
           renderScene={renderScene}
           onIndexChange={setIndex}
-          renderTabBar={props => (
-            <TabBar
-              {...props}
-              style={{
-                backgroundColor: colors.COLOR_PRIMARY,
-                elevation: 0,
-              }}
-              indicatorStyle={{
-                backgroundColor: colors.COLOR_PRIMARY,
-                borderRadius: 4,
-                alignSelf: 'center',
-              }}
-              activeColor="#fff"
-              inactiveColor="#737474"
-              renderLabel={({ route, focused, color }) => (
-                <Text style={{ fontSize: 14 }}>{route.title}</Text>
-              )}
-            />
-          )}
+          renderTabBar={props => {
+            return (
+              <TabBar
+                {...props}
+                style={{
+                  backgroundColor: colors.COLOR_PRIMARY,
+                  elevation: 0,
+                }}
+                indicatorStyle={{
+                  backgroundColor: colors.COLOR_GREY,
+                  borderRadius: 4,
+                  alignSelf: 'center',
+                }}
+                activeColor="#fff"
+                inactiveColor="#737474"
+                renderLabel={({ route, focused, color }) => (
+                  <Text
+                    style={{
+                      fontSize: 14,
+                      color: focused ? colors.COLOR_WHITE : colors.COLOR_GREY,
+                      fontWeight: focused ? '400' : 'normal',
+                    }}>
+                    {route.title}
+                  </Text>
+                )}
+              />
+            );
+          }}
         />
       </View>
     </View>
