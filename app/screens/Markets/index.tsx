@@ -74,7 +74,7 @@ const renderScene = SceneMap({
   third: GrowthMarketScene,
 });
 
-const Home: React.FC = () => {
+const Markets: React.FC = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'first', title: 'Junior Market' },
@@ -124,4 +124,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Markets;
