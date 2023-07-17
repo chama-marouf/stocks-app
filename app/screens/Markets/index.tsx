@@ -75,7 +75,6 @@ const Markets: React.FC<MarketsProps> = ({ navigation }) => {
       <FlatList
         data={filteredData[0]}
         renderItem={({ item }: { item: StockData }) => {
-          console.log('item', item.price);
           return (
             <StockItem
               symbol={item.symbol}

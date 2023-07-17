@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 import { theme } from 'app/styles';
 import LineChartComponent from '../LineChart';
-import NavigationService from 'app/navigation/NavigationService';
+
 const { colors } = theme;
 
 type StockItemType = {

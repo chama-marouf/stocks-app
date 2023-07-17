@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer, Theme } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import MarketStack from './MarketStack';
 import Portflolio from 'app/screens/Portfolio';
 import News from 'app/screens/News';
