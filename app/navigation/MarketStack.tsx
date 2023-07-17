@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Theme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import ThemeController from '../components/ThemeController';
-
 import Markets from 'app/screens/Markets';
 import StockDetails from 'app/screens/Markets/StockDetails';
 
@@ -14,7 +12,6 @@ const homeOptions = {
   headerTitleStyle: {
     fontWeight: 'bold',
   },
-  headerRight: () => <ThemeController />,
 };
 
 interface IProps {
