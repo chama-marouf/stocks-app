@@ -15,30 +15,50 @@ import StockItem from 'app/components/StockItem';
 
 const { colors } = theme;
 
-const MarketsProps = {};
+interface StockData {
+  id: string;
+  symbol: string;
+  name: string;
+  percentageGain: number;
+  historicalData: any; // Adjust the type of historicalData as per your needs
+  price: number;
+}
 
-const Markets: React.FC = ({ navigation }) => {
-  const [index, setIndex] = useState(0);
-  const [filteredData, setFilteredData] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [routes] = useState([
+interface MarketData {
+  [key: string]: StockData[];
+}
+
+type Route = {
+  key: string;
+  title: string;
+};
+
+type MarketsProps = {
+  navigation: any; // TODO: fix this type
+};
+
+const Markets: React.FC<MarketsProps> = ({ navigation }) => {
+  const [index, setIndex] = useState<number>(0);
+  const [filteredData, setFilteredData] = useState<MarketData[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const routes: Route[] = [
     { key: 'first', title: 'Junior Market' },
     { key: 'second', title: 'Main Market' },
     { key: 'third', title: 'Growth Market' },
-  ]);
+  ];
 
   useEffect(() => {
-    const filteredMainMarket = MainMarket.filter(item => {
+    const filteredMainMarket = MainMarket.filter((item: StockData) => {
       const itemName = item.name.toLowerCase();
       return itemName.includes(searchQuery.toLowerCase());
     });
 
-    const filteredJuniorMarket = JuniorMarket.filter(item => {
+    const filteredJuniorMarket = JuniorMarket.filter((item: StockData) => {
       const itemName = item.name.toLowerCase();
       return itemName.includes(searchQuery.toLowerCase());
     });
 
-    const filteredGrowthMarket = GrowthMarket.filter(item => {
+    const filteredGrowthMarket = GrowthMarket.filter((item: StockData) => {
       const itemName = item.name.toLowerCase();
       return itemName.includes(searchQuery.toLowerCase());
     });
@@ -49,11 +69,12 @@ const Markets: React.FC = ({ navigation }) => {
       filteredGrowthMarket,
     ]);
   }, [searchQuery]);
+
   const MainMarketScene = () => (
     <View style={{ flex: 1 }}>
       <FlatList
         data={filteredData[0]}
-        renderItem={({ item }) => {
+        renderItem={({ item }: { item: StockData }) => {
           console.log('item', item.price);
           return (
             <StockItem
@@ -75,7 +96,7 @@ const Markets: React.FC = ({ navigation }) => {
     <View style={{ flex: 1 }}>
       <FlatList
         data={filteredData[1]}
-        renderItem={({ item }) => (
+        renderItem={({ item }: { item: StockData }) => (
           <StockItem
             symbol={item.symbol}
             name={item.name}
@@ -94,7 +115,7 @@ const Markets: React.FC = ({ navigation }) => {
     <View style={{ flex: 1 }}>
       <FlatList
         data={filteredData[2]}
-        renderItem={({ item }) => (
+        renderItem={({ item }: { item: StockData }) => (
           <StockItem
             symbol={item.symbol}
             name={item.name}
